@@ -44,11 +44,13 @@
             </div>
         </div>
         <div class="col mt-5">
-            <ul>
+            <ul class="mb-3">
                 @foreach ($users as $user)
                     <p class="text-center fw-bold text-success">{{ $user->name }} <span class="text-primary ms-5">Email: {{ $user->email }}</span></p>
                 @endforeach
             </ul>
+
+            {{ $users->links() }}
         </div>
     </div>
 

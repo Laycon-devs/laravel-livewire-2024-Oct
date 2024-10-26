@@ -3,9 +3,9 @@
 namespace App\Http\Livewire;
 
 use App\Models\User;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
-
 class Clicker extends Component
 {
     public $name;
@@ -30,7 +30,7 @@ class Clicker extends Component
 
     public function render()
     {
-        $users = User::all();
+        $users = User::paginate(5);
         return view(
             'livewire.clicker',
             ['users' => $users]
