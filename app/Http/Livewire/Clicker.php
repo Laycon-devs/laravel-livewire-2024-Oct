@@ -8,12 +8,24 @@ use Livewire\Component;
 
 class Clicker extends Component
 {
+    public $name;
+    public $email;
+    public $password;
+
     public function handleCreateUser(){
-        User::create([
-            'name' => 'Xamuel Oyeniran',
-            'email' => 'oyeniran.sam@gmail.com',
-            'password' => Hash::make('11111111')
+        $this->validate([
+            'name' => 'required|string|max:50',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|string|min:6|max:10'
         ]);
+        User::create([
+            'name' => $this->name,
+            'email' => $this->email,
+            'password' => Hash::make($this->password)
+        ]);
+        session()->flash('message', 'User account created successfully......');
+        $this->reset(['name', 'email', 'password']);
+
     }
 
     public function render()
