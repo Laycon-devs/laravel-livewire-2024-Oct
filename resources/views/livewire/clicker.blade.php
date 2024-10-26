@@ -50,7 +50,9 @@
                 @endforeach
             </ul>
 
-            {{ $users->links() }}
+            <div class="position-fixed">
+                {{ $users->links('vendor.livewire.bootstrap') }}
+            </div>
         </div>
     </div>
 
