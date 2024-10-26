@@ -2,28 +2,26 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
 
 class Clicker extends Component
 {
-    public $count = 0;
+    public function handleCreateUser(){
+        User::create([
+            'name' => 'Xamuel Oyeniran',
+            'email' => 'oyeniran.sam@gmail.com',
+            'password' => Hash::make('11111111')
+        ]);
+    }
 
-    public function handleIncre()
-    {
-        $this->count++;
-    }
-    
-    public function handleDecre()
-    {
-        $this->count--;
-    }
-    public function handleReset()
-    {
-        $this->count = 0;
-    }
-    
     public function render()
     {
-        return view('livewire.clicker');
+        $users = User::all();
+        return view(
+            'livewire.clicker',
+            ['users' => $users]
+        );
     }
 }
