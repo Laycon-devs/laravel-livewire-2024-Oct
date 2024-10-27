@@ -9,14 +9,14 @@ use Livewire\WithFileUploads;
 
 class RegistrationForm extends Component
 {
-
     use WithFileUploads;
     public $name;
     public $email;
     public $password;
     public $profilePic;
-
+    
     public function createUser(){
+        sleep(2);
         $this->validate([
             'name' => 'required|string|min:3|max:50',
             'email' => 'required|email|unique:users,email',
@@ -33,6 +33,7 @@ class RegistrationForm extends Component
             'password' => Hash::make($this->password),
             'image' => $imagePath,
         ]);
+        $this->emit('userCreated');
 
         $this->reset(['name', 'email', 'password', 'profilePic']);
         session()->flash('message', 'Your account has been created successfully');

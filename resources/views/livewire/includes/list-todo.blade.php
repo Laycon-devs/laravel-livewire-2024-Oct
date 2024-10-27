@@ -31,7 +31,7 @@
                     wire:click="editTodo({{ $todo->id }}, '{{ $todo->name }}')">
                     <i class="bi bi-pencil-square"></i> <!-- Edit Icon -->
                 </button>
-                <button class="btn btn-sm btn-outline-danger" wire:click="deleteTodo({{ $todo->id }})">
+                <button class="btn btn-sm btn-outline-danger" wire:confirm="Are you sure you want to delete this post?" wire:click="deleteTodo({{ $todo->id }})">
                     <i class="bi bi-trash"></i> <!-- Delete Icon -->
                 </button>
             </div>

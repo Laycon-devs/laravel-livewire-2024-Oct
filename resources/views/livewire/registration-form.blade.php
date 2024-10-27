@@ -2,17 +2,18 @@
     <div class="card p-4">
         <!-- Success Message -->
         @if (session()->has('message'))
-            <div class="alert alert-success my-3 text-center">
-                {{ session('message') }}
-            </div>
+        <div class="alert alert-success my-3 text-center">
+            {{ session('message') }}
+        </div>
         @endif
         <h3 class="text-center mb-4">Create User Account</h3>
 
         <!-- Image Preview -->
         @if ($profilePic)
-            <div class="mb-3 text-center">
-                <img src="{{ $profilePic->temporaryUrl() }}" alt="Profile Picture Preview" class="img-thumbnail" style="width: 150px; height: 150px;">
-            </div>
+        <div class="mb-3 text-center">
+            <img src="{{ $profilePic->temporaryUrl() }}" alt="Profile Picture Preview" class="img-thumbnail"
+                style="width: 150px; height: 150px;">
+        </div>
         @endif
 
         <!-- Form -->
@@ -46,7 +47,10 @@
             </div>
 
             <!-- Submit Button -->
-            <button type="submit" class="btn btn-primary btn-block">Create Account</button>
+            <button type="submit" class="btn btn-primary btn-block">
+                <span wire:loading.class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+                <span wire:loading.remove role="status">Create Account</span>
+            </button>
         </form>
 
     </div>
